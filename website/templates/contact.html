@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Contact
+{% endblock %}
+
+{% block meta_description %}This is the website of ikbel!{% endblock %}"
+
+{% block content %}
+<!-- ***** Breadcrumb Area Start ***** -->
+  <div class="breadcumb-area bg-img bg-gradient-overlay" style="background-image: url('https://img.freepik.com/premium-photo/world-map-with-lights-it_542670-3515.jpg');">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <h2 class="title">Contact</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="breadcumb--con">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Contact</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Breadcrumb Area End ***** -->
+
+
+  <!-- ***** Contact Area Start ***** -->
+  {% if message_name %}
+  <!-- Default message after send mail Area Start -->
+    <center>
+        <h2>Merci {{ message_name }}!</h2>
+        <p>Nous avons bien reçu votre e-mail et nous y répondrons prochainement...</p>
+    </center>
+      <br><br><br>
+  <!-- Default message after send mail Area End -->
+  {% else %}
+  <section class="dento-contact-area mt-50 mb-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="google-maps mb-100">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11394.598239868112!2d10.267924124533897!3d36.84733913100225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd4b59fa33db07%3A0xb124df6b969de89e!2sValomnia%20Tunis!5e0!3m2!1sfr!2stn!4v1707687525279!5m2!1sfr!2stn"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Contact Information -->
+        <div class="col-12 col-md-4">
+          <div class="contact-information">
+            <h5>Address</h5>
+            <p>Immeuble Titanium,Lac2,Rue de l'île de Djerba,Tunis</p>
+
+
+            <h5>Phone</h5>
+            <p>+33 1 84 17 64 98</p>
+
+             <p>+44 20 3445 0476</p>
+
+
+            <h5>Email</h5>
+            <p class="mb-0">contact@valomnia.com</p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-12 col-md-8">
+          <div class="contact-form">
+            <!-- Section Heading -->
+            <div class="section-heading">
+              <h2>Contactez-nous </h2>
+              <div class="line"></div>
+            </div>
+            <!-- Form -->
+            <form action="{% url 'contact' %}" method="post">  <!-- urls.py have a name contact -->
+                {% csrf_token %}  <!-- cross site request forgery token for hackers -->
+              <div class="row">
+                <div class="col-lg-6">
+                  <input type="text" name="message-name" class="form-control mb-30" placeholder="Nom">
+                </div>
+                <div class="col-lg-6">
+                  <input type="email" name="message-email" class="form-control mb-30" placeholder="Email">
+                </div>
+                <div class="col-12">
+                  <textarea name="message" class="form-control mb-30" placeholder= "Message"></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn dento-btn">Envoyer le message</button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  <!-- ***** Contact Area End ***** -->
+{% endblock %}
