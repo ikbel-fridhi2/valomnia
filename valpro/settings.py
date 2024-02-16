@@ -11,10 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
-import django_heroku
-import dj_database_url
-from decouple import config
-
 # from smtplib import smtpd
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +26,7 @@ SECRET_KEY = 'django-insecure-)i3vorhljlfu00dtcm-7a*9r-3g0m$uh)n4c-3-p7jo=d=_art
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','valomniaroutes-8123a9b312c0.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -53,7 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = 'valpro.urls'
@@ -128,8 +123,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -170,7 +163,4 @@ ALLOWED_HOSTS = []
 
 
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-django_heroku.settings(locals())
